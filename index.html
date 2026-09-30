@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AIで薬を作る時代｜ながら投資入門 #1</title>
+<meta name="description" content="料理しながら聞ける、AI創薬の徹底解説。ボタンひとつで最初から最後まで自動再生。">
+<style>
+  :root{
+    --bg:#0f1220; --panel:#171b2e; --panel2:#1e2440;
+    --accent:#ff9f43; --accent2:#54a0ff; --text:#f5f6fa; --muted:#a4a9c4;
+    --ok:#2ed573;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif}
+  .wrap{max-width:760px;margin:0 auto;padding:16px 16px 40px;min-height:100vh;display:flex;flex-direction:column}
+  header{text-align:center;padding:8px 0 14px}
+  header h1{font-size:1.15rem;margin:0 0 4px;line-height:1.4}
+  header p{margin:0;color:var(--muted);font-size:.8rem}
+  /* Stage */
+  .stage{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:18px;
+    overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center}
+  .stage img{width:100%;height:100%;object-fit:cover;display:none}
+  .stage img.on{display:block;animation:kb 20s ease-out both}
+  @keyframes kb{from{transform:scale(1.05)}to{transform:scale(1.14)}}
+  /* Slide render */
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;
+    padding:7% 8%;background:linear-gradient(135deg,#1e2440,#0f1220)}
+  .slide.on{display:flex}
+  .slide h2{font-size:clamp(1.1rem,4.6vw,2rem);margin:0 0 3%;color:#fff;line-height:1.3}
+  .slide .sub{color:var(--accent);font-size:clamp(.85rem,3vw,1.15rem);margin:-2% 0 4%}
+  .slide ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2.4%}
+  .slide li{font-size:clamp(.8rem,3vw,1.15rem);line-height:1.45;padding-left:1.6em;position:relative;color:#eef1ff}
+  .slide li::before{content:"";position:absolute;left:0;top:.55em;width:.7em;height:.7em;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  /* Pie chart */
+  .chart{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
+    padding:6%;background:linear-gradient(135deg,#1e2440,#0f1220);text-align:center}
+  .chart.on{display:flex}
+  .chart h2{font-size:clamp(1rem,3.8vw,1.6rem);margin:0 0 4%}
+  .pie{width:min(46%,220px);aspect-ratio:1;border-radius:50%;margin-bottom:4%}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;font-size:clamp(.8rem,2.8vw,1.05rem)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .dot{width:14px;height:14px;border-radius:4px;display:inline-block}
+  .badge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);
+    padding:5px 12px;border-radius:999px;font-size:.75rem;color:#fff}
+  /* Caption */
+  .caption{background:var(--panel);border-radius:14px;padding:14px 16px;margin-top:14px;min-height:96px}
+  .who{font-size:.78rem;color:var(--accent);font-weight:700;margin-bottom:5px}
+  .line{font-size:.98rem;line-height:1.6;color:#eef1ff}
+  /* Controls */
+  .bar{height:6px;background:var(--panel2);border-radius:999px;margin:16px 0 6px;overflow:hidden}
+  .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .2s}
+  .time{display:flex;justify-content:space-between;color:var(--muted);font-size:.72rem;margin-bottom:12px}
+  .ctrls{display:flex;align-items:center;justify-content:center;gap:22px}
+  button{background:none;border:none;color:var(--text);cursor:pointer;font-size:1rem}
+  .np{width:74px;height:74px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(255,159,67,.4)}
+  .np svg{width:34px;height:34px;fill:#0f1220}
+  .side{width:52px;height:52px;border-radius:50%;background:var(--panel2);display:flex;align-items:center;justify-content:center}
+  .side svg{width:22px;height:22px;fill:var(--text)}
+  .row2{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:16px;color:var(--muted);font-size:.8rem}
+  .row2 label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+  .overlay{position:absolute;inset:0;background:rgba(6,8,18,.72);backdrop-filter:blur(4px);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer;z-index:5}
+  .overlay .big{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(255,159,67,.5)}
+  .overlay .big svg{width:40px;height:40px;fill:#0f1220}
+  .overlay p{margin:0;color:#fff;font-weight:600}
+  .disc{color:var(--muted);font-size:.72rem;text-align:center;margin-top:22px;line-height:1.6}
+  a{color:var(--accent2)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1 id="title">AIで薬を作る時代</h1>
+    <p>料理しながら聞ける ながら投資入門 #1 ／ ▶を押すだけ</p>
+  </header>
+
+  <div class="stage" id="stage">
+    <span class="badge" id="badge">1 / 25</span>
+    <div class="overlay" id="overlay">
+      <div class="big"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <p>タップして再生 ▶</p>
+    </div>
+  </div>
+
+  <div class="caption">
+    <div class="who" id="who">　</div>
+    <div class="line" id="line">「▶ 再生」を押すと、最初から最後まで自動で流れます。料理や家事をしながらどうぞ。</div>
+  </div>
+
+  <div class="bar"><i id="prog"></i></div>
+  <div class="time"><span id="tcur">0:00</span><span id="ttot">--:--</span></div>
+
+  <div class="ctrls">
+    <button class="side" id="prev" aria-label="前へ"><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+    <button class="np" id="play" aria-label="再生"><svg id="playicon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+    <button class="side" id="next" aria-label="次へ"><svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM6 6l8.5 6L6 18z"/></svg></button>
+  </div>
+
+  <div class="row2">
+    <label><input type="checkbox" id="auto" checked> 自動で次へ</label>
+  </div>
+
+  <p class="disc">
+    ※本番組は情報整理を目的としたもので、投資助言ではありません。投資は自己責任で。<br>
+    出演：あかり（聞き手）／テツ先生（解説）　音声：Google TTS
+  </p>
+</div>
+
+<audio id="audio" preload="auto"></audio>
+
+<script>
+let M=null, i=0, playing=false;
+const stage=document.getElementById('stage');
+const audio=document.getElementById('audio');
+const overlay=document.getElementById('overlay');
+const playIcon=document.getElementById('playicon');
+
+const pieColors=['#ff6b6b','#2ed573'];
+
+function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+function buildVisual(b){
+  if(b.visual.kind==='image'){
+    return `<img class="v" data-i="" src="${b.image}" alt="">`;
+  }
+  if(b.visual.kind==='chart' && b.visual.chartData){
+    const ds=b.visual.chartData.data.datasets[0].data;
+    const labels=b.visual.chartData.data.labels;
+    const total=ds.reduce((a,c)=>a+c,0);
+    let acc=0, segs=[];
+    ds.forEach((v,k)=>{const from=acc/total*360; acc+=v; const to=acc/total*360; segs.push(`${pieColors[k%pieColors.length]} ${from}deg ${to}deg`);});
+    const legend=labels.map((l,k)=>`<span><i class="dot" style="background:${pieColors[k%pieColors.length]}"></i>${esc(l)}（${ds[k]}%）</span>`).join('');
+    return `<div class="chart v"><h2>${esc(b.visual.title)}</h2><div class="pie" style="background:conic-gradient(${segs.join(',')})"></div><div class="legend">${legend}</div></div>`;
+  }
+  // slide
+  const sub=b.visual.subtitle?`<div class="sub">${esc(b.visual.subtitle)}</div>`:'';
+  const lis=(b.visual.bullets||[]).map(x=>`<li>${esc(x)}</li>`).join('');
+  return `<div class="slide v"><h2>${esc(b.visual.title)}</h2>${sub}<ul>${lis}</ul></div>`;
+}
+
+function render(){
+  const b=M.beats[i];
+  // rebuild stage content (keep badge + overlay)
+  [...stage.querySelectorAll('.v')].forEach(e=>e.remove());
+  stage.insertAdjacentHTML('beforeend', buildVisual(b));
+  const v=stage.querySelector('.v');
+  requestAnimationFrame(()=>{ v.classList.add('on'); if(v.tagName==='IMG'){} });
+  document.getElementById('badge').textContent=`${i+1} / ${M.beats.length}`;
+  document.getElementById('who').textContent=b.speaker==='テツ'?'テツ先生':'あかり';
+  document.getElementById('line').textContent=b.text;
+  audio.src=b.audio;
+}
+
+function playCur(){ audio.play().then(()=>{playing=true;setIcon();}).catch(()=>{}); }
+function setIcon(){ playIcon.innerHTML = playing
+  ? '<path d="M6 5h4v14H6zm8 0h4v14h-4z"/>'
+  : '<path d="M8 5v14l11-7z"/>'; }
+
+function go(n){ if(n<0||n>=M.beats.length){audio.pause();playing=false;setIcon();return;} i=n; render(); playCur(); }
+
+document.getElementById('play').onclick=()=>{
+  overlay.style.display='none';
+  if(playing){audio.pause();playing=false;} else {playCur();}
+  setIcon();
+};
+overlay.onclick=()=>{overlay.style.display='none';render();playCur();};
+document.getElementById('next').onclick=()=>go(i+1);
+document.getElementById('prev').onclick=()=>go(Math.max(0,i-1));
+document.getElementById('auto');
+
+audio.addEventListener('ended',()=>{ if(document.getElementById('auto').checked) go(i+1); else {playing=false;setIcon();} });
+audio.addEventListener('timeupdate',()=>{
+  const p=audio.duration?audio.currentTime/audio.duration*100:0;
+  document.getElementById('prog').style.width=p+'%';
+  document.getElementById('tcur').textContent=fmt(audio.currentTime);
+  document.getElementById('ttot').textContent=fmt(audio.duration);
+});
+function fmt(s){ if(!isFinite(s))return'--:--'; s=Math.floor(s); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+
+// Media Session (lock screen controls on phone)
+function mediaSession(){
+  if(!('mediaSession'in navigator))return;
+  navigator.mediaSession.setActionHandler('play',()=>{playCur();setIcon();});
+  navigator.mediaSession.setActionHandler('pause',()=>{audio.pause();playing=false;setIcon();});
+  navigator.mediaSession.setActionHandler('nexttrack',()=>go(i+1));
+  navigator.mediaSession.setActionHandler('previoustrack',()=>go(Math.max(0,i-1)));
+}
+
+fetch('manifest.json?v='+Date.now()).then(r=>r.json()).then(d=>{
+  M=d; if(d.title)document.getElementById('title').textContent=d.title.replace(/【.*?】/,'').trim();
+  mediaSession();
+  render();
+}).catch(e=>{ document.getElementById('line').textContent='読み込みエラー: '+e; });
+</script>
+</body>
+</html>

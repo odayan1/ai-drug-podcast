@@ -1,0 +1,369 @@
+{
+  "title": "【徹底解説】AIで薬を作る時代｜AI for サイエンス投資入門 #1",
+  "description": "料理しながら聞ける、約10分の徹底解説番組。AI for サイエンス、特に「AIで新薬を作る」AI創薬を、2人の対話でじっくり掘り下げる。新薬開発の厳しい現実（10年・数千億円・9割失敗）から、AIが効く3工程、イーライリリー（TuneLab/エヌビディアAIラボ/自社スパコン）、モデルナ（メルクと個別化がんワクチンがPhase3成功/Lucy）、リカージョン=RXRX（エクセンシア合併/50PBデータ/大手提携/エヌビディアの株式売却）、ツルハシ側のエヌビディア（BioNeMo）、日本勢（中外MALEXA/塩野義×PFN/武田/富士フイルム）、そして現実チェック（AI発見薬の承認はまだゼロ・Phase3未通過）と今後の見どころまで。※本番組は情報整理を目的とし、投資助言ではありません。",
+  "beats": [
+    {
+      "n": "01",
+      "speaker": "あかり",
+      "text": "はい、みなさんこんにちは!お料理や洗い物をしながら、ながら聞きできる、投資のゆるっと解説番組です。今日もよろしくお願いします。聞き手のあかりです。",
+      "audio": "audio/beat01.mp3",
+      "duration": 10.992,
+      "visual": {
+        "kind": "image",
+        "prompt": "Cozy warm kitchen at golden hour, flat modern illustration style, a cheerful young woman host wearing an apron holding a wooden spoon, steam rising from a pot on the stove, a small podcast microphone on the counter, inviting relaxed mood, warm orange and cream palette, clean vector art"
+      },
+      "image": "images/beat01.png"
+    },
+    {
+      "n": "02",
+      "speaker": "テツ",
+      "text": "解説担当のテツです。今日はたっぷり十分ほど、ひとつのテーマをじっくり掘り下げていきますよ。テーマはエーアイ・フォー・サイエンス。科学の研究そのものにAIを使う、という大きな流れの中でも、今日は特に、AIで新しい薬を作る、AI創薬にしぼってお話しします。",
+      "audio": "audio/beat02.mp3",
+      "duration": 17.952,
+      "visual": {
+        "kind": "slide",
+        "title": "今日のテーマ",
+        "subtitle": "AI for サイエンス 〜AIで薬を作る〜",
+        "bullets": [
+          "新薬開発の“厳しい現実”とは",
+          "AIは薬づくりのどこで効くのか",
+          "米国の主役たち＋日本勢＋そして本当のところ"
+        ]
+      }
+    },
+    {
+      "n": "03",
+      "speaker": "あかり",
+      "text": "AI創薬。ここ最近、本当によく耳にするようになったよね。でも正直、何がそんなにすごいのか、まだぼんやりしてて。",
+      "audio": "audio/beat03.mp3",
+      "duration": 9.264,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern illustration, a curious young woman tilting her head with a small question mark, a soft thought bubble showing a DNA double helix merging with a microchip, warm cozy palette, friendly educational vibe, clean vector art"
+      },
+      "image": "images/beat03.png"
+    },
+    {
+      "n": "04",
+      "speaker": "テツ",
+      "text": "じゃあまず、薬づくりがどれだけ大変か、というところから。新しい薬をひとつ世に出すのに、ふつうは十年から十五年、お金は日本円で数千億円かかると言われています。しかも、開発に入った候補のうち、およそ九割は途中で失敗して消えていく。これが製薬業界の、ずっと変わらない厳しい現実なんです。",
+      "audio": "audio/beat04.mp3",
+      "duration": 22.152,
+      "visual": {
+        "kind": "chart",
+        "title": "新薬開発の現実：約9割は失敗して消える",
+        "chartData": {
+          "type": "pie",
+          "data": {
+            "labels": [
+              "途中で失敗して消える候補",
+              "承認までたどり着く候補"
+            ],
+            "datasets": [
+              {
+                "label": "開発候補の行方",
+                "data": [
+                  90,
+                  10
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "n": "05",
+      "speaker": "あかり",
+      "text": "九割が失敗!?それはすごい世界だ…。時間もお金も、とんでもなくかかるんだね。",
+      "audio": "audio/beat05.mp3",
+      "duration": 6.984,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern illustration, a woman looking astonished with wide eyes, a towering stack of coins and a long calendar beside her, playful exaggeration of time and cost, warm palette, clean vector art"
+      },
+      "image": "images/beat05.png"
+    },
+    {
+      "n": "06",
+      "speaker": "テツ",
+      "text": "そうなんです。だからこそAIの出番なんですね。AIが効いてくるのは、主に前半の三つの工程。ひとつ目、病気の原因になっている、標的、を見つける。ふたつ目、その標的にくっつく薬の分子をデザインする。三つ目、山ほどある候補の中から、効きそうなものを一気に絞り込む。実際に実験する前に、コンピューターの中で当たりをつけてしまう、というイメージです。",
+      "audio": "audio/beat06.mp3",
+      "duration": 25.92,
+      "visual": {
+        "kind": "slide",
+        "title": "AIが効く “前半3工程”",
+        "subtitle": "",
+        "bullets": [
+          "① 標的を見つける（病気の原因タンパク質など）",
+          "② 薬の分子をデザインする",
+          "③ 大量の候補から“効きそう”を一気に絞り込む",
+          "→ 実験の前に、AIで“当たり”をつける"
+        ]
+      }
+    },
+    {
+      "n": "07",
+      "speaker": "あかり",
+      "text": "なるほど、片っぱしから実験するんじゃなくて、AIがまず有望なものを選んでくれるのね。それは確かに時間の節約になりそう。で、この分野で先を走ってる会社を、具体的に教えてほしいな。",
+      "audio": "audio/beat07.mp3",
+      "duration": 12.912,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern infographic illustration, a large funnel with many tiny molecule icons pouring in at the top, an AI brain filtering them in the middle, only a few glowing promising pills coming out the bottom, clean and clear, warm palette, vector art"
+      },
+      "image": "images/beat07.png"
+    },
+    {
+      "n": "08",
+      "speaker": "テツ",
+      "text": "はい、まず一社目はアメリカのイーライリリー。今や世界でトップクラスの製薬会社で、肥満症や糖尿病の薬が世界的に大ヒットしています。ここで稼いだ莫大な利益を、次の研究開発に、そしてAIに惜しみなくつぎ込んでいるのが特徴です。二千二十五年には、チューンラボ、というプラットフォームを立ち上げました。",
+      "audio": "audio/beat08.mp3",
+      "duration": 22.512,
+      "visual": {
+        "kind": "image",
+        "prompt": "Conceptual flat illustration, a colossal friendly giant made of pharmaceutical capsules and molecular structures, glowing AI circuit lines running through its body, standing tall over a modern lab city skyline, confident powerful mood, blue and gold accents, clean vector art"
+      },
+      "image": "images/beat08.png"
+    },
+    {
+      "n": "09",
+      "speaker": "テツ",
+      "text": "このチューンラボがおもしろくて、リリーが一千億円以上かけて集めた自社のデータで鍛えたAIモデルを、なんと、外のスタートアップに無料で開放しているんです。さらに二千二十六年には、半導体大手のエヌビディアと組んで、五年間で最大およそ一千五百億円規模の共同AIラボを設立。自社にも、数千個の最新GPUを積んだスーパーコンピューターを導入しました。まさに、体力のある巨人が、AIでさらに引き離しにかかっている構図ですね。",
+      "audio": "audio/beat09.mp3",
+      "duration": 29.4,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern illustration, a vast high-tech supercomputer data center with glowing server racks and blue GPU lights, scientists in lab coats walking between rows, DNA helix holograms floating above, powerful cutting-edge mood, blue and teal palette, clean vector art"
+      },
+      "image": "images/beat09.png"
+    },
+    {
+      "n": "10",
+      "speaker": "あかり",
+      "text": "けた違いだ…。お金の力で一気にAI化してるんだね。あ、コロナのワクチンで有名なモデルナも、この分野に入ってくるんだよね?",
+      "audio": "audio/beat10.mp3",
+      "duration": 8.76,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern illustration, a woman with an impressed expression giving a small nod, a lightbulb icon appearing, warm cozy kitchen background slightly blurred, warm palette, clean vector art"
+      },
+      "image": "images/beat10.png"
+    },
+    {
+      "n": "11",
+      "speaker": "テツ",
+      "text": "そうなんです、二社目がモデルナ。ここの強みは、エムアールエヌエー、という技術。ものすごくざっくり言うと、体の中に、こういうタンパク質を作ってね、という設計図を送り込む仕組みです。この設計図の配列をどう組むか、という部分にAIがものすごく効く。そして二千二十六年の八月、大きなニュースがありました。",
+      "audio": "audio/beat11.mp3",
+      "duration": 22.464,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern illustration, an mRNA strand depicted as a glowing blueprint scroll gently transforming into a protective shield and a syringe, soft teal and violet colors, hopeful science vibe, clean vector art"
+      },
+      "image": "images/beat11.png"
+    },
+    {
+      "n": "12",
+      "speaker": "テツ",
+      "text": "モデルナが、製薬大手のメルクと一緒に開発してきた、一人ひとりの患者に合わせて作る、個別化がんワクチンが、皮膚がんの一種、メラノーマの最終段階の治験で、良い結果を出したんです。がんの再発を抑える効果が確認されました。今は、肺がん、膀胱がん、腎臓がん、膵臓がんなどにも対象を広げて開発中。社内には、ルーシー、というAI基盤も持っていて、実験と学習をぐるぐる回しています。",
+      "audio": "audio/beat12.mp3",
+      "duration": 27.792,
+      "visual": {
+        "kind": "slide",
+        "title": "モデルナ：mRNA × AI",
+        "subtitle": "",
+        "bullets": [
+          "メルクと共同の“個別化がんワクチン”がメラノーマのPhase3で成功（再発を抑制）",
+          "肺・膀胱・腎臓・膵臓など他のがんにも展開中",
+          "社内AI基盤「Lucy」で実験と学習を高速に回す"
+        ]
+      }
+    },
+    {
+      "n": "13",
+      "speaker": "あかり",
+      "text": "がんワクチンかあ、夢があるね。えっと、それで、もう一社、アメリカにあったよね?名前が思い出せなくて。",
+      "audio": "audio/beat13.mp3",
+      "duration": 7.512,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern illustration, a woman snapping her fingers trying to recall something, a playful three-dots thinking bubble above her head, warm cozy palette, clean vector art"
+      },
+      "image": "images/beat13.png"
+    },
+    {
+      "n": "14",
+      "speaker": "テツ",
+      "text": "たぶんそれ、リカージョン・ファーマシューティカルズですね。証券コードは、アール・エックス・アール・エックス。ここが今日の主役級で、いわゆる、AI創薬のピュアプレイ。つまり大手のように、既存の薬で稼ぎながら、ではなくて、AIで薬を見つけること一本で勝負しているベンチャーです。二千二十四年には、同じくAI創薬の名門、エクセンシアと合併して規模を広げました。",
+      "audio": "audio/beat14.mp3",
+      "duration": 21.84,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern illustration, a huge grid wall of microscope cell images being scanned by AI, glowing analysis lines connecting patterns across the grid, a sleek automated robotic biotech lab, cutting-edge pure-play AI drug discovery mood, indigo and cyan palette, clean vector art"
+      },
+      "image": "images/beat14.png"
+    },
+    {
+      "n": "15",
+      "speaker": "テツ",
+      "text": "リカージョンのすごいところは、自分たちのロボット実験室で、細胞の画像を大量に撮って、AIに学習させていること。その独自データは、なんと五十ペタバイト以上。バイエル、ロシュ、ジェネンテックといった大手と、合わせれば数千億円規模になりうる提携も結んでいます。一方で二千二十六年には、出資していたエヌビディアが株式を売却して話題になりました。ただし、技術的な協力そのものは続いている、とされています。",
+      "audio": "audio/beat15.mp3",
+      "duration": 27.912,
+      "visual": {
+        "kind": "slide",
+        "title": "リカージョン（RXRX）：AI創薬のピュアプレイ",
+        "subtitle": "",
+        "bullets": [
+          "エクセンシアと合併し規模拡大（2024年）",
+          "独自データ50ペタバイト超をAIに学習",
+          "バイエル・ロシュ・ジェネンテックと大型提携",
+          "エヌビディアは株式を売却も、技術協業は継続"
+        ]
+      }
+    },
+    {
+      "n": "16",
+      "speaker": "あかり",
+      "text": "へえ、エヌビディアが株を売ったのは、ちょっとドキッとするね。そのエヌビディア自身は、薬を作るわけじゃないんだよね?",
+      "audio": "audio/beat16.mp3",
+      "duration": 8.112,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern illustration, a woman with a slightly surprised but intrigued expression, a small stock chart with a downward arrow floating beside her, warm cozy palette, clean vector art"
+      },
+      "image": "images/beat16.png"
+    },
+    {
+      "n": "17",
+      "speaker": "テツ",
+      "text": "そこが大事なポイント。エヌビディアは、薬そのものは作りません。でも、AI創薬に必要な、計算パワーを、業界中に供給しているんです。ゴールドラッシュでたとえるなら、金を掘る人ではなく、ツルハシとスコップを売る側。バイオネモ、という創薬用のAI基盤を出していて、リリーや、サーモフィッシャーなど、名だたる企業と次々に提携している。誰の薬が当たっても、道具はエヌビディアから買う。だから一番手堅い、という見方も根強いんです。",
+      "audio": "audio/beat17.mp3",
+      "duration": 30.96,
+      "visual": {
+        "kind": "image",
+        "prompt": "Conceptual flat illustration, gold rush metaphor: many prospectors digging for gold in the background, but one calm merchant in the foreground selling glowing GPU-shaped pickaxes and shovels to everyone, the merchant's stall is the busiest, witty and clear, warm gold and green palette, clean vector art"
+      },
+      "image": "images/beat17.png"
+    },
+    {
+      "n": "18",
+      "speaker": "あかり",
+      "text": "なるほど、ツルハシ屋さん!賢いなあ。じゃあ、日本の会社はどうなの?",
+      "audio": "audio/beat18.mp3",
+      "duration": 6.72,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern illustration, Mount Fuji in the background under a soft sky, a modern Japanese pharmaceutical research lab building in the foreground, subtle cherry-blossom petals mixed with faint AI circuit motifs, calm and proud mood, clean vector art"
+      },
+      "image": "images/beat18.png"
+    },
+    {
+      "n": "19",
+      "speaker": "テツ",
+      "text": "日本もちゃんと戦っていますよ。代表格が、中外製薬。マレクサ、という自社AI基盤を持っていて、特に、抗体、という種類の薬づくりでは世界トップクラスと言われます。塩野義製薬は、日本のAI企業、プリファードネットワークスと五十億円規模で組んで、二千二十五年には、AIで見つけた最初の臨床候補にまでこぎつけました。武田薬品は業務の効率化にAIを活用。富士フイルムは、フィルムで培った精密な化学技術を武器に、薬を作って供給する側で存在感があります。ただ正直、規模とスピードでは、まだアメリカが一歩も二歩も先を行っているのが現状です。",
+      "audio": "audio/beat19.mp3",
+      "duration": 41.424,
+      "visual": {
+        "kind": "slide",
+        "title": "日本勢の顔ぶれ",
+        "subtitle": "",
+        "bullets": [
+          "中外製薬：自社AI基盤「MALEXA」、抗体創薬は世界トップ級",
+          "塩野義製薬：Preferred Networksと提携、2025年にAI創薬の臨床候補",
+          "武田薬品：業務効率化にAIを活用",
+          "富士フイルム：精密化学で“作る・供給する”側の強み",
+          "課題：規模とスピードは米国が先行"
+        ]
+      }
+    },
+    {
+      "n": "20",
+      "speaker": "あかり",
+      "text": "なるほどね〜。じゃあもう、AIが作った薬が、どんどん世に出てるってこと?",
+      "audio": "audio/beat20.mp3",
+      "duration": 5.472,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern illustration, a hopeful woman imagining pills and medicines appearing, a small sparkle of expectation, but a faint question mark hovering, warm cozy palette, clean vector art"
+      },
+      "image": "images/beat20.png"
+    },
+    {
+      "n": "21",
+      "speaker": "テツ",
+      "text": "いや、ここが今日いちばん大事なところなんです。二千二十六年の今の時点で、AIが設計・発見した薬で、アメリカやヨーロッパ、日本の当局から承認されたものは、まだひとつもありません。最終段階の治験、フェーズ3を通過したものも、ゼロ。実際、シュレディンガー、という会社は、AIで見つけた薬の初期の治験で、重い副作用が出てしまい、二千二十五年に開発を中止しています。さっきの、九割が失敗する、という壁は、AIを使っても、まだ崩せていないんです。",
+      "audio": "audio/beat21.mp3",
+      "duration": 37.32,
+      "visual": {
+        "kind": "slide",
+        "title": "現実チェック（2026年時点）",
+        "subtitle": "",
+        "bullets": [
+          "AIが発見・設計した薬で“承認”されたものは、まだゼロ",
+          "最終段階のPhase3を通過した例もゼロ",
+          "初期治験で開発中止になった例もある（Schrödinger等）",
+          "“約9割が失敗”の壁は、AIでもまだ崩せていない"
+        ]
+      }
+    },
+    {
+      "n": "22",
+      "speaker": "テツ",
+      "text": "理由はシンプルで、AIは、候補を見つける、前半をものすごく速くできる。でも、実際に人間の体で安全か、効くか、を確かめる治験の期間や、規制の審査、工場での量産、このあたりは、AIでは飛ばせないからです。生き物と法律のルールは、そう簡単には変わらない。だからこの分野を追いかけるなら、AIが見つけた薬が、初めてフェーズ3を通った、とか、初めて承認された、というニュース、これが本当の号砲になります。",
+      "audio": "audio/beat22.mp3",
+      "duration": 33.312,
+      "visual": {
+        "kind": "slide",
+        "title": "だから、ここに注目",
+        "subtitle": "",
+        "bullets": [
+          "AIが速いのは“見つける”前半",
+          "治験・規制・量産は、AIでは飛ばせない",
+          "注目イベント → AI発見薬が「初のPhase3通過」「初の承認」"
+        ]
+      }
+    },
+    {
+      "n": "23",
+      "speaker": "あかり",
+      "text": "うわぁ、深い…。今日はほんとに勉強になったなあ。じゃあ最後に、今日のまとめ、テツ先生お願いします!",
+      "audio": "audio/beat23.mp3",
+      "duration": 7.824,
+      "visual": {
+        "kind": "image",
+        "prompt": "Flat modern illustration, a satisfied woman taking notes in a small notebook with a warm smile, a checklist icon floating beside her, cozy kitchen background, warm palette, clean vector art"
+      },
+      "image": "images/beat23.png"
+    },
+    {
+      "n": "24",
+      "speaker": "テツ",
+      "text": "はい。ポイントは四つ。ひとつ、薬づくりは、十年・数千億円・九割失敗、の厳しい世界。ふたつ、AIはその、見つける、前半を、劇的に速くする。三つ、主役は、巨人のリリー、mRNAのモデルナ、ピュアプレイのリカージョン、そして土台を握るエヌビディア。四つ、ただし、AIが発見した薬の承認は、まだゼロ。つまり、ここからが本番、ということですね。",
+      "audio": "audio/beat24.mp3",
+      "duration": 32.424,
+      "visual": {
+        "kind": "slide",
+        "title": "今日のまとめ",
+        "subtitle": "",
+        "bullets": [
+          "① 薬づくりは 10年・数千億円・9割失敗の世界",
+          "② AIは“見つける”前半を劇的に速くする",
+          "③ 主役：リリー / モデルナ / リカージョン / エヌビディア",
+          "④ AI発見薬の承認はまだゼロ＝ここからが本番"
+        ]
+      }
+    },
+    {
+      "n": "25",
+      "speaker": "あかり",
+      "text": "よく分かりました!そして大事なこと。この番組は、ニュースや情報を分かりやすく整理するためのもので、特定の株の売り買いをすすめるものではありません。投資は自己責任、最後はご自分でよく調べて判断してくださいね。それでは、また次回!今日もお料理、うまくできますように。ごちそうさまでした〜!",
+      "audio": "audio/beat25.mp3",
+      "duration": 21.12,
+      "visual": {
+        "kind": "image",
+        "prompt": "Cozy warm kitchen at dusk, flat modern illustration, two friendly hosts — a young woman in an apron and a kind older male teacher — waving goodbye together, a finished home-cooked meal steaming on the table, soft golden evening light, heartwarming closing scene, warm orange and cream palette, clean vector art"
+      },
+      "image": "images/beat25.png"
+    }
+  ]
+}
